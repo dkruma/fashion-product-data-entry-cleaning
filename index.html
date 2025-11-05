@@ -3,495 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Product Data Entry & Cleaning Project</title>
+    <title>Fashion Product Data Entry & Cleaning - Diki Darmawan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        
+        .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            border-radius: 15px;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-text h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .screenshot-container {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background: #f5f5f5;
-            padding: 20px;
-        }
-
-        .screenshot-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #f0e7ff 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border: 2px dashed #667eea;
-        }
-
-        .screenshot-placeholder svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-            opacity: 0.6;
-        }
-
-        .screenshot-placeholder p {
-            color: #667eea;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Project Overview */
-        .section {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .feature-card {
-            padding: 25px;
-            background: linear-gradient(135deg, #f8f9ff 0%, #fff5ff 100%);
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Download Section */
-        .download-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .download-section h2 {
-            color: white;
-        }
-
-        .download-section h2::after {
-            background: white;
-        }
-
-        .download-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 18px 25px;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
+        
+        .card-hover {
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            background: #f8f9ff;
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-
-        .download-btn svg {
-            width: 24px;
-            height: 24px;
+        
+        .hero-pattern {
+            background-color: #667eea;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-
-        /* Process Steps */
-        .steps {
-            display: grid;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .step {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            background: #f8f9ff;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateX(10px);
-        }
-
-        .step-number {
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .step-content h3 {
-            color: #333;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .step-content p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: white;
-            margin-top: 40px;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 600;
-            border-bottom: 2px solid white;
-        }
-
-        footer a:hover {
-            opacity: 0.8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text h2 {
-                font-size: 1.8rem;
-            }
-
-            .section {
-                padding: 25px;
-            }
-
-            .section h2 {
-                font-size: 1.5rem;
-            }
-
-            .step {
-                flex-direction: column;
-            }
-
-            .download-buttons {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-
-            header {
-                padding: 15px;
-            }
-
-            .hero {
-                padding: 25px;
-            }
-
-            h1 {
-                font-size: 1.3rem;
-            }
-
-            .hero-text h2 {
-                font-size: 1.5rem;
-            }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div>
-                        <h1>Fashion Product Data Entry & Cleaning Project</h1>
-                        <p class="subtitle">Professional Data Management Portfolio</p>
-                    </div>
-                    <div class="badge">100 Entries Processed</div>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-tshirt text-2xl text-purple-600"></i>
+                    <h1 class="text-xl font-bold text-gray-900">Fashion Product Data Entry & Cleaning</h1>
                 </div>
+                <a href="../../index.html" class="text-gray-700 hover:text-purple-600 transition">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Portfolio
+                </a>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h2>Transform Raw Data into Professional Insights</h2>
-                    <p>A comprehensive simulation of professional data entry work focusing on fashion product data management and cleaning using Google Sheets.</p>
-                    <p style="font-size: 0.95rem; color: #888;">Clean, organized dataset ready for business analysis and reporting.</p>
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-database text-sm"></i>
+                    <span class="text-sm font-semibold">Data Entry & Cleaning Project</span>
                 </div>
-                <div class="screenshot-container">
-                    <img src="img/fashion_product_data_entry_and_cleaning.png" alt="Fashion Product Data Entry Screenshot" style="width: 100%; height: auto; border-radius: 8px;">
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Overview -->
-        <section class="section">
-            <h2>Key Features</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>🗑️ Duplicate Removal</h3>
-                    <p>Identify and remove duplicate entries to ensure unique product records across the dataset.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📝 Format Standardization</h3>
-                    <p>Normalize text formatting for consistency and professionalism across all data columns.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📊 Missing Value Handling</h3>
-                    <p>Strategic approach to fill missing data using statistical calculations and average price methods.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎨 Automated Formatting</h3>
-                    <p>Conditional formatting for intuitive visualization of product stock status and categories.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Process Steps -->
-        <section class="section">
-            <h2>Data Cleaning Process</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Data Entry</h3>
-                        <p>Input 100 fashion product entries with complete details including name, category, price, and stock information.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Fashion Product Data Management</h1>
+                <p class="text-xl text-purple-100 max-w-3xl mx-auto mb-6">
+                    Professional data entry and cleaning of 100 fashion products using Google Sheets, featuring duplicate removal, format standardization, and automated inventory visualization
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-tshirt"></i>
+                        <span>Fashion Products</span>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Data Validation</h3>
-                        <p>Review and validate each entry to ensure accuracy and completeness of all data fields.</p>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-database"></i>
+                        <span>100 Entries</span>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Data Cleaning</h3>
-                        <p>Remove duplicates, standardize formats, and fill missing values using statistical methods.</p>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-broom"></i>
+                        <span>Data Cleaning</span>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Quality Control</h3>
-                        <p>Final verification and application of visual formatting to facilitate data analysis.</p>
+                    <div class="flex items-center space-x-2">
+                        <i class="fab fa-google"></i>
+                        <span>Google Sheets</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Download Section -->
-        <section class="section download-section">
-            <h2>Download Dataset</h2>
-            <p style="margin-bottom: 15px; opacity: 0.95;">Dataset available in multiple formats for your analysis needs</p>
-            <div class="download-buttons">
-    <a href="assets/fashion_product_data_entry_and_cleaning.csv" class="download-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-        </svg>
-        Download CSV
-    </a>
-    <a href="assets/fashion_product_data_entry_and_cleaning.xlsx" class="download-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-        </svg>
-        Download XLSX
-    </a>
-    <a href="LINK_GOOGLE_DRIVE_ANDA" class="download-btn" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-        </svg>
-        Google Drive
-    </a>
-</div>
-        </section>
-
-        <!-- Tools & Technologies -->
-        <section class="section">
-            <h2>Tools & Technologies</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>📊 Google Sheets</h3>
-                    <p>Primary platform for data entry and cleaning with advanced formulas and functions.</p>
+    <!-- Quick Stats -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600">100</div>
+                    <div class="text-sm text-gray-600 mt-1">Products Processed</div>
                 </div>
-                <div class="feature-card">
-                    <h3>🔍 Data Validation</h3>
-                    <p>Data validation techniques to ensure integrity and accuracy of information.</p>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-600">4</div>
+                    <div class="text-sm text-gray-600 mt-1">Cleaning Steps</div>
                 </div>
-                <div class="feature-card">
-                    <h3>📈 Conditional Formatting</h3>
-                    <p>Automated visualization for quick identification of product status and categories.</p>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600">100%</div>
+                    <div class="text-sm text-gray-600 mt-1">Data Accuracy</div>
                 </div>
-                <div class="feature-card">
-                    <h3>🧹 Data Cleaning</h3>
-                    <p>Professional data cleaning techniques for high-quality dataset production.</p>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600">5+</div>
+                    <div class="text-sm text-gray-600 mt-1">Data Fields</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>Compiled by <a href="https://github.com/yourusername" target="_blank">Diki Darmawan</a> – Data Entry Project</p>
-            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Fashion Product Data Entry & Cleaning Project © 2025</p>
-        </footer>
-    </div>
+    <!-- Project Brief -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Project Overview</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-bullseye text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Project Objective</h3>
+                            <p class="text-gray-600">
+                                Simulate professional data entry work focusing on fashion product data management and cleaning using Google Sheets. Transform raw data into clean, analysis-ready dataset through systematic validation, deduplication, and automated formatting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-tasks text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Key Features</h3>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>✓ Duplicate Removal</li>
+                                <li>✓ Format Standardization</li>
+                                <li>✓ Missing Value Handling</li>
+                                <li>✓ Conditional Formatting</li>
+                                <li>✓ Inventory Visualization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Original Spreadsheet Screenshot -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Data Visualization</h2>
+            <p class="text-gray-600 mb-8 text-center">Original dataset showcasing data entry and cleaning workflow</p>
+            
+            <div class="mb-8 bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-file-excel text-2xl"></i>
+                            <div>
+                                <h3 class="text-lg font-bold">Original Spreadsheet</h3>
+                                <p class="text-sm text-purple-100">Fashion product data entry and cleaning in Google Sheets</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-white text-purple-600 px-4 py-2">Google Sheets</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="border-4 border-gray-200 rounded-lg overflow-hidden">
+                        <img src="img/fashion_product_data_entry_and_cleaning.png" alt="Fashion Product Data Entry Spreadsheet" class="w-full" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-12 text-center" style="display: none;">
+                            <i class="fas fa-table text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500 mb-2 font-semibold">Original Spreadsheet Screenshot</p>
+                            <p class="text-sm text-gray-400">Upload screenshot as: <code class="bg-gray-200 px-2 py-1 rounded">img/fashion_product_data_entry_and_cleaning.png</code></p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between text-sm text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-info-circle text-blue-600"></i>
+                            <span>Clean, organized dataset with automated formatting</span>
+                        </div>
+                        <a href="img/fashion_product_data_entry_and_cleaning.png" target="_blank" class="text-purple-600 hover:text-purple-700 font-semibold">
+                            <i class="fas fa-expand-alt mr-2"></i>View Full Size
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Project Highlights</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-trash-alt text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Duplicate Removal</h3>
+                    <p class="text-gray-600">
+                        Identify and eliminate duplicate entries to ensure unique product records across the dataset.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-align-left text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Format Standardization</h3>
+                    <p class="text-gray-600">
+                        Normalize text formatting for consistency and professionalism across all data columns.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-bar text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Missing Value Handling</h3>
+                    <p class="text-gray-600">
+                        Strategic approach to fill missing data using statistical calculations and average methods.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Automated Formatting</h3>
+                    <p class="text-gray-600">
+                        Conditional formatting for intuitive visualization of product stock status and categories.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Cleaning Process -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Data Cleaning Process</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+                            <h4 class="font-bold text-gray-900 mb-2">Data Entry</h4>
+                            <p class="text-gray-600">Input 100 fashion product entries with complete details including name, category, price, and stock information into Google Sheets.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+                            <h4 class="font-bold text-gray-900 mb-2">Data Validation</h4>
+                            <p class="text-gray-600">Review and validate each entry to ensure accuracy and completeness of all data fields using validation rules and formulas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+                            <h4 class="font-bold text-gray-900 mb-2">Data Cleaning</h4>
+                            <p class="text-gray-600">Remove duplicates, standardize formats, and fill missing values using statistical methods such as average price calculation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+                            <h4 class="font-bold text-gray-900 mb-2">Quality Control</h4>
+                            <p class="text-gray-600">Final verification and application of conditional formatting to facilitate data analysis and inventory visualization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Download Dataset</h2>
+            <p class="text-gray-600 mb-8 text-center">Clean, analysis-ready fashion product dataset available in multiple formats</p>
+            
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-8">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <a href="assets/fashion_product_data_entry_and_cleaning.csv" download class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition text-center group">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                            <i class="fas fa-file-csv text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">CSV Format</h3>
+                        <p class="text-sm text-gray-600 mb-4">Universal format compatible with all spreadsheet tools</p>
+                        <div class="inline-flex items-center text-purple-600 font-semibold">
+                            <i class="fas fa-download mr-2"></i>
+                            Download CSV
+                        </div>
+                    </a>
+                    
+                    <a href="assets/fashion_product_data_entry_and_cleaning.xlsx" download class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition text-center group">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                            <i class="fas fa-file-excel text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Excel Format</h3>
+                        <p class="text-sm text-gray-600 mb-4">Native Excel format with formatting preserved</p>
+                        <div class="inline-flex items-center text-purple-600 font-semibold">
+                            <i class="fas fa-download mr-2"></i>
+                            Download XLSX
+                        </div>
+                    </a>
+                    
+                    <a href="https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_DRIVE_LINK" target="_blank" class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition text-center group">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                            <i class="fab fa-google-drive text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Google Drive</h3>
+                        <p class="text-sm text-gray-600 mb-4">View and collaborate online via Google Sheets</p>
+                        <div class="inline-flex items-center text-purple-600 font-semibold">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            Open in Drive
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Project Impact</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl text-center card-hover">
+                    <i class="fas fa-check-circle text-4xl text-purple-600 mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">100%</div>
+                    <div class="text-sm text-gray-600 mt-2">Data Accuracy</div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl text-center card-hover">
+                    <i class="fas fa-broom text-4xl text-blue-600 mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">0</div>
+                    <div class="text-sm text-gray-600 mt-2">Duplicate Entries</div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl text-center card-hover">
+                    <i class="fas fa-database text-4xl text-green-600 mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">100%</div>
+                    <div class="text-sm text-gray-600 mt-2">Data Completeness</div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl text-center card-hover">
+                    <i class="fas fa-clock text-4xl text-indigo-600 mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-900">Ready</div>
+                    <div class="text-sm text-gray-600 mt-2">Analysis-Ready Format</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Used -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Tools & Technologies</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition">
+                    <i class="fab fa-google text-4xl text-blue-600 mb-3"></i>
+                    <div class="font-semibold text-gray-800">Google Sheets</div>
+                    <div class="text-xs text-gray-500 mt-1">Data Platform</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-table text-4xl text-green-600 mb-3"></i>
+                    <div class="font-semibold text-gray-800">Excel</div>
+                    <div class="text-xs text-gray-500 mt-1">Data Organization</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-palette text-4xl text-purple-600 mb-3"></i>
+                    <div class="font-semibold text-gray-800">Conditional Formatting</div>
+                    <div class="text-xs text-gray-500 mt-1">Visualization</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-calculator text-4xl text-orange-600 mb-3"></i>
+                    <div class="font-semibold text-gray-800">Formulas & Functions</div>
+                    <div class="text-xs text-gray-500 mt-1">Data Processing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author & Repository -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Project Information</h2>
+            <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-xl shadow-lg">
+                <div class="mb-6">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full mx-auto flex items-center justify-center mb-4">
+                        <i class="fas fa-user text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Diki Darmawan</h3>
+                    <p class="text-gray-600 mb-1">Data Entry & Data Cleaning Specialist</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+                    <a href="mailto:dikidarmawan7st@gmail.com" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition">
+                        <i class="fas fa-envelope"></i>
+                        <span>dikidarmawan7st@gmail.com</span>
+                    </a>
+                    <a href="https://github.com/dkruma" target="_blank" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                </div>
+
+                <div class="pt-6 border-t border-purple-200">
+                    <a href="https://github.com/dkruma/fashion-product-data-entry-cleaning" target="_blank" class="inline-flex items-center space-x-3 bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition shadow-lg">
+                        <i class="fab fa-github text-xl"></i>
+                        <span class="font-semibold">View Project Repository</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-2">© 2024 Diki Darmawan - Fashion Product Data Entry & Cleaning Project</p>
+            <p class="text-purple-200 text-sm">Data Entry | Data Cleaning | Google Sheets | Professional Data Management</p>
+        </div>
+    </footer>
 </body>
 </html>
